@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{> head}}
+
+</head>
+
+<body>
+     <!-- animation -->
+    {{> animation}}
+    <!-- animation ends -->
+
+    <!-- navbar -->
+    {{> navbar}}
+    {{!-- navbar-end --}}
+   
+
+    <!-- sidebar-nav -->
+    {{> sidebar}}
+    {{!-- sidebar end --}}
+
+    <!-- enquiry_page -->
+    <div class="center_part_fee">
+        <div class="fee_top_attendance">Taking-Attendance</div>
+        <div class="attendance_middle">
+
+            <form action="/admin/postAttendance/{{courseChoosenID}}" method="post">
+              <!-- Including CSRF token in form (csrfToken -> global variable)-->
+              {{!-- <input type="hidden" name="_csrf" value="{{csrfToken}}"> --}}
+              
+            <div class="datepicker">
+               <input
+                 type="date"
+                 name=""
+                 data-placeholder="Enter Date"
+                 class="input_date_att"
+                 disabled
+                 style="cursor: not-allowed;"
+               />
+             </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Roll no</th>
+                        <th>Attendance</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                     {{#unless studentsList}}
+
+                            <tr>
+                                <td colspan="3" style="color: brown; text-align: center;">NO STUDENT ENROLLED</td>
+
+                            </tr>
+
+                     {{else}}
+                     
+                            {{#each studentsList}}
+                            <tr>
+                                <td >{{this.firstname}}</td>                        
+                                <td >{{this.rollno}}</td>
+                                   <input type="hidden" name="studentName[{{this._id}}]" value="{{this.firstname}}">
+                                 <input type="hidden" name="studentRollno[{{this._id}}]" value="{{this.rollno}}">
+
+                                <td>
+                                    <select name="studentAttendance[{{this._id}}]" class="attendanceSelect" id="attendanceSelect" required>
+                                        <option value="present">Present</option>
+                                        <option value="absent">Absent</option>
+                                    </select>
+                                </td>
+                            </tr>   
+
+                            {{/each}}
+
+
+                     {{/unless}}
+            
+
+                </tbody>
+            </table>
+
+            <div class="submitAttendanceButton ">
+            <input type="submit" value="SUBMIT" >
+            </div>
+            </form>
+
+        </div>
+
+    </div>
+
+    <script src="/js/jscript.js"></script>
+    
+</body>
+
+</html>

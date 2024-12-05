@@ -1,0 +1,113 @@
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+==>------------------------------------------------A-TODO-AND-REMINDER-.TXT---------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------
+ 
+ https://snyk.io/
+ 
+ https://expressjs.com/en/advanced/best-practice-security.html  
+
+ https://github.com/advisories?query=type%3Areviewed
+
+ https://blog.risingstack.com/node-js-security-checklist/
+
+ https://sqlmap.org/
+
+
+
+# "cookie-parser": "^1.4.3" done
+# "morgan": "^1.8.2",
+"serve-favicon": "^2.4.3"
+
+"cors" 
+
+"sweetalert"
+
+"flash"
+"nodemailer"
+ "http-errors"
+"express-flash"
+"express-session"
+
+"csurf"
+"helmet"
+
+
+
+
+--security-dependencies--
+"hpp"          --"HTTP-parameter-pollution-attacks"--
+"helmet"        --to-secure-HTTP-headers"
+"snyk"
+"csurf"     --Protect-your-app-against-CSRFProtect-your-app-against-CSRF--
+---
+"rate-limiter-flexible" --against-brute-force--
+-------
+
+"joi validator"
+"ajv validator"
+"express validator"
+---------------------
+
+var redis = require('redis');
+
+" uuid"
+ "date-fns"
+
+ "method-override"
+
+"cookie-session"--> want to know  more, is res.cookies({}), nd this works same ...blahblah
+
+***-->>> sanitizinf user input against xss
+1) Always filter and sanitize user input to protect against cross-site scripting (XSS) and command injection attacks.
+2) Defend against SQL injection attacks by using parameterized queries or prepared statements.
+3) Use the open-source sqlmap tool to detect SQL injection vulnerabilities in your app.
+4) Use the nmap and sslyze tools to test the configuration of your SSL ciphers, keys, and renegotiation as well as the validity of your certificate.
+5) Use safe-regex to ensure your regular expressions are not susceptible to regular expression denial of service attacks.
+
+
+"Prevent brute-force attacks against authorization"
+    *A simple and powerful technique is to block authorization attempts using two metrics:
+1) The first is number of consecutive failed attempts by the same user name and IP address.
+2) The second is number of failed attempts from an IP address over some long period of time. For example, block an IP address if it makes 100 failed attempts in one day.
+rate-limiter-flexible package provides tools to make this technique easy and fast. You can find an example of brute-force protection in the documentation
+
+-->>child_process.execFile.
+
+
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "hbs": "^5.2.0",    
+    "mongoose": "^4.11.1",
+    'multer'
+    
+
+
+1. refreshToken code $$$ refreshToken--change on every time       --DONE--       
+2. roles define                                                   --DONE--
+3. otp/mail verification                                          --DONE--
+4. strong password, forget-password otpVerify,reset-pass page     --DONE--
+5. logoutAll button
+6. course crud                                                    --DONE--      
+7. student/teacher update $ delete $ view on screen               --DONE--   
+8. same for teacher                                               --DONE--
+9. post inquiry handling                                          --DONE--
+10. notice                                                        --DONE--
+11. payment gateway                                               --WOKRING-- ==PENDING==
+12. profile view
+13.dashboard for all
+14. Attendance view and mark                                      --DONE--
+15. "cookie-session/exxpress"- cookie use--->INSTEAD OF NORMAL ONE
+        * flash messages 
+# 16. admin database
+17. parent-pages (optional)
+18. more client side validation
+19. correction of date input                                       --DONE--
+20. 404 NOT FOUND PAGE                                             --DONE--     
+21. attendance database-->> [course name, ki jagah course id as refernce dalni h]    --DONE-- 
+
+22. admin dashboard update for fee/salary display                  ==>PENDING<==
+
+# ERROR :  --DONE--
+# dashboard:1  Access to fetch at 'http://localhost:3000/refresh' from origin 'http://127.0.0.1:3000' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource. If an opaque response serves your needs, set the request's mode to 'no-cors' to fetch the resource with CORS disabled.

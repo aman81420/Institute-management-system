@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {{> head}}
+  </head>
+
+  <body>
+     <!-- animation -->
+    {{> animation}}
+    <!-- animation ends -->
+
+    <!-- navbar -->
+    {{> I_navbar}}
+    {{!-- navbar-end --}}
+   
+
+    <!-- sidebar-nav -->
+    {{> I_sidebar}}
+    {{!-- sidebar end --}}
+
+    <!-- login card -->
+    <div class="login">
+      <div class="card">
+        <div class="top">Zillionsoftech</div>
+
+        <div class="middle">
+
+          <form action="/" method="post">
+                 <!-- Including CSRF token in form (csrfToken -> global variable)-->
+                <input type="hidden" name="_csrf" value="{{csrfToken}}">
+            <input
+              type="email"
+              name="email"
+              class="user_login"
+            
+              placeholder="abc@mail.com"
+              autocomplete="on"
+              required
+            />
+            <input
+              type="password"
+              name="password"
+              class="user_login"
+             
+              placeholder="**********"
+              required
+            />
+
+            <div class="user_category">
+              <input type="radio"  name="role"  id="admin" value="admin" checked />
+              <label for="admin"  class="category_label"  >Admin</label>
+
+              <input type="radio" name="role"  id="teacher"value="teacher" />
+              <label for="teacher"  class="category_label" >Teacher </label>
+
+              <input type="radio" name="role"  id="student" value="student"/>
+              <label for="student"  class="category_label" >Student</label>
+            </div>
+
+            <input type="submit" value="Get In" id="login_button" />
+
+            <hr>
+            <div>
+              <p class="forgetPasswordLink"><a href="/login/verify/email">Forgot Password?</a></p>
+              <p class="inquirePageLink">No Account/Guest? <a href="postInquiry">Inquire?</a></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    {{!-- <script src="js/animation.js" ></script> --}}
+    
+      <script src="/js/jscript.js"></script>
+  </body>
+</html>

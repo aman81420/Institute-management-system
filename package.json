@@ -1,0 +1,32 @@
+{
+  "name": "student_management_system",
+  "version": "1.0.0",
+  "description": "IT manages teachers and students fees and all data.\r Admin can add students and teachers, and create there accounts\r and take attendance of students.\r Teacher can also take attendance of students.\r -> student can see their fee receipt and pay fee online",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon app.js -e hbs,js,css "
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "csurf": "^1.11.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "hbs": "^4.2.0",
+    "helmet": "^7.1.0",
+    "hpp": "^0.2.3",
+    "jsonwebtoken": "^9.0.2",
+    "jwt-decode": "^4.0.0",
+    "mongoose": "^7.6.1",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.7",
+    "rate-limiter-flexible": "^3.0.6",
+    "validator": "^13.11.0"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^9.2.0"
+  }
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {{> head}}
+  </head>
+
+  <body>
+     <!-- animation -->
+    {{> animation}}
+    <!-- animation ends -->
+
+    <!-- navbar -->
+    {{> navbar}}
+    {{!-- navbar-end --}}
+   
+
+    <!-- sidebar-nav -->
+    {{> sidebar}}
+    {{!-- sidebar end --}}
+
+    <!-- enquiry_page -->
+    <div class="center_part_fee">
+      <div class="fee_top">Fee Details-Batch1</div>
+      <div class="fee_details_middle">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Roll no</th>
+              <th>Mob. no</th>
+              <th>Dues</th>
+              <th>Status</th>
+              <th>Pay</th>
+              <th>receipt</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            {{#unless feeData}}
+
+              <tr>
+                  <td colspan="7"  style="color: brown; text-align: center;">NO STUDENT ENROLLED</td>
+              </tr>
+
+
+
+
+            {{else}}
+                  {{#each feeData}}
+                      <tr>
+                        <td>{{this.student.firstname}}</td>
+                        <td>{{this.student.rollno}}</td>
+                        <td>{{this.student.telephone}}</td>
+                        <td>{{this.amount}}</td>
+                        <td>{{this.paymentstatus}}</td>
+                        <td>
+                          <a href=""><i class="bi bi-piggy-bank-fill"></i></a>
+                        </td>
+                        <td>
+                          <a href=""
+                            ><i class="bi bi-file-earmark-arrow-down-fill"></i
+                          ></a>
+                        </td>
+                      </tr>
+
+                  {{/each}}
+            {{/unless}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script src="/js/jscript.js"></script>
+  </body>
+</html>

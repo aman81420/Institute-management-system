@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+     {{> head}}
+  </head>
+
+  <body>
+    <!-- animation -->
+    {{> animation}}
+    <!-- animation ends -->
+
+    <!-- navbar -->
+    {{> navbar}}
+    {{!-- navbar-end --}}
+   
+
+    <!-- sidebar-nav -->
+    {{> sidebar}}
+    {{!-- sidebar end --}}
+
+    <!-- enquiry_page -->
+    <div class="center_part_enquiry">
+      <div class="enq_top">
+        <p><i class="bi bi-bell-fill"></i> PENDING INQURIES!!</p>
+
+        <div id="enquiry_forms_no">
+          <div id="inquiry_display_text">Inquries &nbsp;:</div>
+
+          <div id="inquiry_display">{{responseData.count}}</div>
+        </div>
+      </div>
+
+      <div class="enq_middle">
+        <div class="enq_slidding">
+           {{#each responseData.data}}
+           {{!-- --delay nd --duration are used in style.css as var --}}
+              <div class="tray" style="--delay: {{@index}}; --duration: {{../responseData.calculatedDuration}};" >
+                <div class="box1">
+                  <div class="inner1">
+                    <div class="inner11"><i class="bi bi-person-circle"></i></div>
+                    <div class="inner12">{{this.firstname}} {{this.lastname}}  <span>{{this.email}}</span></div>
+                  </div>
+                  <div class="inner3">
+
+                    <form action="/inquiryDetails" method="get">
+                      <!-- Including CSRF token in form (csrfToken -> global variable)-->
+                    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+                    
+                         <button type="submit">Check</button>
+                    </form>
+
+                  </div>
+                </div>
+                <div class="box2">
+                  {{this.message}}
+                </div>
+              </div>
+          {{/each}}
+         
+        </div>
+
+        <div class="enq_details">
+          
+            {{!-- <div class="More_Details"> --}}
+              
+              <form action="/inquiryDetails" method="get">
+                <!-- Including CSRF token in form (csrfToken -> global variable)-->
+                    {{!-- <input type="hidden" name="_csrf" value="{{csrfToken}}"> --}}
+                
+                      {{!-- <i class="bi bi-box-arrow-in-down-left"></i> --}}
+                    <button type="submit" style="border: none; width: auto; padding: 5px 10px; color: black;" > 
+                          click for details
+                      </button>
+                
+              </form>
+
+            {{!-- </div> --}}
+            <div id="More_Details" class="More_Details"></div>
+   
+        </div>
+      </div>
+    </div>
+
+     <!--scripts  -->
+    <script src="/js/jscript.js"></script>
+  </body>
+</html>

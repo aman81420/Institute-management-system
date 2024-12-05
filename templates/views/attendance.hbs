@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {{>head}}
+  </head>
+
+  <body>
+      <!-- animation -->
+    {{> animation}}
+    <!-- animation ends -->
+
+    <!-- navbar -->
+    {{> navbar}}
+    {{!-- navbar-end --}}
+   
+
+    <!-- sidebar-nav -->
+    {{> sidebar}}
+    {{!-- sidebar end --}}
+
+    <!-- enquiry_page -->
+    <div class="center_part_fee">
+      <div class="fee_top_attendance">Attendance</div>
+      <div class="attendance_middle">
+
+        <table>
+          <thead>
+            <tr>
+              <th>Batch</th>
+              <th>Mark </th>
+              <th>View </th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each courseDetail}}
+            <tr>
+              <td> {{this.courseName}} </td>
+              <td>
+                <form action="/admin/markAttendance/{{this._id}}" method="get">
+
+                  <button class="attendance_button"> 
+                    <i class="bi bi-pen-fill"></i>
+                  </button>
+                </form>
+              </td>
+              <td>
+                <form action="/admin/viewAttendance/{{this._id}}" method="get">
+
+                  <button class="attendance_button" >
+                     <i class="bi bi-eye-slash-fill"></i>
+                  </button>
+                </form>
+              </td>
+            </tr>
+            {{/each}}
+
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script src="/js/jscript.js"></script>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {{> head}}
+  </head>
+
+  <body>
+    <!-- animation -->
+    {{> animation}}
+    <!-- animation ends -->
+
+    <!-- navbar -->
+    {{> navbar}} {{!-- navbar-end --}}
+
+    <!-- sidebar-nav -->
+    {{> T_sidebar}} {{!-- sidebar end --}}
+
+    <div class="center_part_dashboard">
+      <div class="admin_dashboard_tray">
+        <div class="admin_dashboard_tray1">
+          <p>Name</p>
+          <p>{{firstname}}</p>
+        </div>
+        <div class="admin_dashboard_tray1">
+          <p>Mobilessss</p>
+          <p>{{telephone}}</p>
+        </div>
+        <div class="admin_dashboard_tray1">
+          <p>Teacher Id</p>
+          <p>{{teacherid}}</p>
+        </div>
+        <div class="admin_dashboard_tray1">
+          <p>Salary</p>
+          <p>Rs {{salary}}</p>
+          <p style="color: yellow; text-align: right; padding-bottom: 20px; padding-right: 30px;"></p>
+        </div>
+      </div>
+
+        <div class="notice">
+        <div class="cover">
+          <div class="slider">
+
+          {{#each noticedisp}}
+          <div class="alert alert-1-primary">
+            <h3 class="alert-title">{{this.noticeHead}}</h3>
+            <p class="alert-content">{{this.notice}}</p>
+          </div>
+
+          {{/each}}
+
+
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/jscript.js"></script>
+  </body>
+</html>

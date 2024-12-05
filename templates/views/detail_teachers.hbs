@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{>head}}
+
+</head>
+
+<body>
+     <!-- animation -->
+    {{> animation}}
+    <!-- animation ends -->
+
+    <!-- navbar -->
+    {{> navbar}}
+    {{!-- navbar-end --}}
+   
+
+    <!-- sidebar-nav -->
+    {{> sidebar}}
+    {{!-- sidebar end --}}
+
+
+    <!------ enquiry_page ----->
+     
+    <div class="center_part_usertable">
+      <section>
+        <h1>Zillionsoftech</h1>
+        <h2>Teacher Details</h2>
+      </section>
+      <div class="tableContainer">
+        <table class="user_table">
+          <thead>
+            <tr>
+              <th>FirstName</th>
+              <th>LastName</th>
+              <th>TeacherID</th>
+              <th>Email</th>
+              <th>Telephone</th>
+              <th>Location</th>
+              <th>AGE</th>
+              <th>JoiningDate</th>
+              <th>Course</th>
+              <th>Salary</th>
+              <th>gender</th>
+              <th>Update</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each TeacherData}}
+            <tr>
+              <td>{{this._doc.firstname}}</td>
+              <td>{{this._doc.lastname}}</td>
+              <td name="TeacherID">{{this._doc.teacherid}}</td>
+              <td name="Email">{{this._doc.email}}</td>
+              <td name="Telephone" class="accordion-content">{{this._doc.telephone}}</td>
+              <!-- prettier ingnore -->
+              <td name="Address" class="accordion-content">
+               {{this._doc.address.street}}, {{this._doc.address.city}}, {{this._doc.address.state}}, {{this._doc.address.pincode}}
+              </td>
+
+              <td name="Age" class="accordion-content">{{this.age}}</td>
+
+              <td name="JoiningDate" class="accordion-content">{{this._doc.joiningdate}}</td>
+              <td name="Course" class="accordion-content">{{this._doc.teachingcourse.courseName}}</td>
+              <td name="Salary" class="accordion-content">{{this._doc.salary}}</td>
+              <td name="Gender" class="accordion-content">{{this._doc.gender}}</td>
+              <td class="accordion-content">
+
+                <form action="/admin/editTeacher/{{this._doc._id}}" method="post">
+                  <!-- Including CSRF token in form (csrfToken -> global variable)-->
+                    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+
+                    <button class="edit-button">Update</button>
+                </form>
+              </td>
+              <td class="accordion-content">
+
+                <form action="/deleteTeacher/{{this._doc._id}}" method="post">
+                  <!-- Including CSRF token in form (csrfToken -> global variable)-->
+                    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+                    
+                    <button class="delete-button">Delete</button>
+                </form>
+              </td>
+            </tr>
+            {{/each}}
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var accordionRows = document.querySelectorAll("tr");
+
+        accordionRows.forEach(function (row) {
+          row.addEventListener("click", function () {
+            this.classList.toggle("active");
+          });
+        });
+      });
+    </script>
+
+
+    <script src="/js/jscript.js"></script>
+</body>
+
+</html>

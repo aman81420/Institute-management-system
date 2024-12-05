@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{>head}}
+
+</head>
+
+<body>
+     <!-- animation -->
+    {{> animation}}
+    <!-- animation ends -->
+
+    <!-- navbar -->
+    {{> navbar}}
+    {{!-- navbar-end --}}
+   
+
+    <!-- sidebar-nav -->
+    {{> sidebar}}
+    {{!-- sidebar end --}}
+
+
+    <!------ enquiry_page ----->
+     
+    <div class="center_part_usertable">
+      <section>
+        <h1>Zillionsoftech</h1>
+        <h2>Inquiry Details</h2>
+      </section>
+      <div class="tableContainer">
+        <table class="user_table">
+          <thead>
+            <tr>
+              <th>FirstName</th>
+              <th>LastName</th>
+              <th>Email</th>
+              <th>Telephone</th>
+              <th>Location</th>
+              <th>Message</th>
+              <th>Status</th>
+              <th>UpdateStatus</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each inquiryData}}
+            <tr>
+              <td>{{this.firstname}}</td>
+              <td>{{this.lastname}}</td>
+              <td name="Email">{{this.email}}</td>
+              <td name="Telephone" class="accordion-content">{{this.telephone}}</td>
+              <!-- prettier ingnore -->
+              <td name="Address" class="accordion-content">
+               {{this.address}}
+              </td>
+
+              <td name="message" class="accordion-content">
+               {{this.message}}
+              </td>
+              <td name="status" value="{{this.status}}" class="accordion-content" >
+               {{this.status}}
+              </td>
+
+              <td class="accordion-content">
+
+                <form action="/updateInquiryStatus/{{this._id}}" method="post">
+                    <!-- Including CSRF token in form (csrfToken -> global variable)-->
+                    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+
+                    <button class="edit-button">Checked</button>
+                </form>
+                
+              </td>
+              <td class="accordion-content">
+
+                <form action="/deleteInquiry/{{this._id}}" method="post">
+                     <!-- Including CSRF token in form (csrfToken -> global variable)-->
+                    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+
+                    <button class="delete-button">Delete</button>
+                </form>
+
+              </td>
+            </tr>
+            {{/each}}
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const accordionRows = document.querySelectorAll("tr");
+        const statusInput = document.getElementsByName("status");
+
+        accordionRows.forEach(function (row) {
+          row.addEventListener("click", function () {
+            this.classList.toggle("active");
+          });
+        });
+
+        statusInput.forEach( (inputElement)=>{
+            if(inputElement.innerText == 'Pending'){
+                inputElement.style.color= "rgb(251, 102, 122)";
+            }else if(inputElement.innerText == 'Resolved'){
+                inputElement.style.color= "lightgreen";
+            }
+        })
+
+
+
+      });
+    </script>
+
+
+    <script src="/js/jscript.js"></script>
+</body>
+
+</html>

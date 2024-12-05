@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {{>head}}
+  </head>
+
+  <body>
+     <!-- animation -->
+     {{> animation}}
+     <!-- animation ends -->
+ 
+     <!-- navbar -->
+     {{> navbar}}
+     {{!-- navbar-end --}}
+    
+ 
+     <!-- sidebar-nav -->
+     {{> T_sidebar}}
+     {{!-- sidebar end --}}
+
+    <!-- sidebar-nav -->
+
+ 
+    <!-- enquiry_page -->
+    <div class="center_part_fee">
+      <div class="fee_top_attendance">Attendance</div>
+      <div class="fee_middle">
+        
+      <table>
+          <thead>
+            <tr>
+              <th>Batch</th>
+              <th>Mark </th>
+              <th>View </th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each courseDetail}}
+            <tr>
+              <td> {{this.courseName}} </td>
+              <td>
+                <form action="/teacher/markAttendance/{{this._id}}" method="get">
+                  <!-- Including CSRF token in form (csrfToken -> global variable)-->
+                    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+
+                  <button class="attendance_button"> 
+                    <i class="bi bi-pen-fill"></i>
+                  </button>
+                </form>
+              </td>
+              <td>
+                <form action="/teacher/viewAttendance/{{this._id}}" method="get">
+                  <!-- Including CSRF token in form (csrfToken -> global variable)-->
+                    <input type="hidden" name="_csrf" value="{{csrfToken}}">
+
+                  <button class="attendance_button" >
+                     <i class="bi bi-eye-slash-fill"></i>
+                  </button>
+                </form>
+              </td>
+            </tr>
+            {{/each}}
+
+
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
+    <script src="/js/jscript.js"></script>
+  </body>
+</html>

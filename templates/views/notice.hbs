@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {{>head}}
+  </head>
+
+  <body>
+       <!-- animation -->
+    {{> animation}}
+    <!-- animation ends -->
+
+    <!-- navbar -->
+    {{> navbar}}
+    {{!-- navbar-end --}}
+   
+
+    <!-- sidebar-nav -->
+    {{> sidebar}}
+    {{!-- sidebar end --}}
+
+    <div class="center_part_notice">
+      <div class="notice_heading">
+        <div class="notice_top">Announce Something</div>
+
+        <div class="notice_middle">
+
+          <form action="/postNotice" method="post" class="Notice_entry">
+                <!-- Including CSRF token in form (csrfToken -> global variable)-->
+                {{!-- <input type="hidden" name="_csrf" value="{{csrfToken}}"> --}}
+
+
+            <ul >
+              <li>
+                <input type="datetime-local" name="expireAt" id="expireNotice"  placeholder="expire of notice" required>
+              </li>
+               <li>
+                     <textarea
+
+                  name="noticeHead"
+                  id=""
+                  class="noticeHeading"
+                  maxlength="30"
+                  
+                  placeholder="Notice Heading.."
+                  required
+                ></textarea>
+
+                </li> 
+
+              <li>
+                <textarea
+                  name="notice"
+                  id=""
+                  maxlength="100"
+                
+                  placeholder="Enter Notice...."
+                  required
+                ></textarea>
+              </li>
+            </ul>
+
+            <ul>
+              <li>
+                <button type="submit" >Submit</button>
+              </li>
+            </ul>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/jscript.js"></script>
+  </body>
+</html>
